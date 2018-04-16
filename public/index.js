@@ -45,9 +45,16 @@ function showScores() {
         .then(scores => {                   
         let json = JSON.stringify(scores);  
         console.log('get json', json); 
-          for (let i = 0; i < scores.length; i++) {
-            console.log("i", scores[i].scoreq);
-          }            
+
+        let stringToShow = '';
+
+        for (let i = 0; i < scores.length; i++) {
+            console.log("i", scores[i]);
+            stringToShow += `${scores[i].name}, ${scores[i].score}`
+        }   
+        console.log(stringToShow) 
+        let textNode = document.createTextNode(stringToShow);
+        gameDiv.appendChild(textNode);        
     })
     .catch(error => {
         console.log("A network error has occurred when attempting to perform the GET request:", error)
